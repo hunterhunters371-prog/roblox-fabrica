@@ -1,0 +1,45 @@
+{
+  "rig": "R6",
+  "nombre": "Saludar",
+  "loop": false,
+  "prioridad": "accion",
+  "easing": "suave",
+  "keyframes": [
+    {
+      "t": 0.0,
+      "poses": {
+        "Right Arm": [0, 0, 0]
+      }
+    },
+    {
+      "t": 0.25,
+      "poses": {
+        "Right Arm": [0, 0, 140]
+      }
+    },
+    {
+      "t": 0.5,
+      "poses": {
+        "Right Arm": [20, 0, 140]
+      }
+    },
+    {
+      "t": 0.75,
+      "poses": {
+        "Right Arm": [-20, 0, 140]
+      }
+    },
+    {
+      "t": 1.0,
+      "poses": {
+        "Right Arm": [20, 0, 140]
+      }
+    },
+    {
+      "t": 1.4,
+      "poses": {
+        "Right Arm": [0, 0, 0]
+      }
+    }
+  ]
+}

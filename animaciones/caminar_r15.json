@@ -1,0 +1,59 @@
+{
+  "rig": "R15",
+  "nombre": "CaminarEpicoR15",
+  "loop": true,
+  "prioridad": "movimiento",
+  "easing": "suave",
+  "keyframes": [
+    {
+      "t": 0.0,
+      "poses": {
+        "RightUpperLeg": [45, 0, 0],
+        "LeftUpperLeg": [-45, 0, 0],
+        "RightUpperArm": [-35, 0, 15],
+        "LeftUpperArm": [35, 0, -15],
+        "UpperTorso": [5, 8, 5]
+      }
+    },
+    {
+      "t": 0.175,
+      "poses": {
+        "RightUpperLeg": [0, 0, 0],
+        "LeftUpperLeg": [0, 0, 0],
+        "RightUpperArm": [0, 0, 8],
+        "LeftUpperArm": [0, 0, -8],
+        "UpperTorso": [2, 0, 0]
+      }
+    },
+    {
+      "t": 0.35,
+      "poses": {
+        "RightUpperLeg": [-45, 0, 0],
+        "LeftUpperLeg": [45, 0, 0],
+        "RightUpperArm": [35, 0, 15],
+        "LeftUpperArm": [-35, 0, -15],
+        "UpperTorso": [5, -8, -5]
+      }
+    },
+    {
+      "t": 0.525,
+      "poses": {
+        "RightUpperLeg": [0, 0, 0],
+        "LeftUpperLeg": [0, 0, 0],
+        "RightUpperArm": [0, 0, 8],
+        "LeftUpperArm": [0, 0, -8],
+        "UpperTorso": [2, 0, 0]
+      }
+    },
+    {
+      "t": 0.7,
+      "poses": {
+        "RightUpperLeg": [45, 0, 0],
+        "LeftUpperLeg": [-45, 0, 0],
+        "RightUpperArm": [-35, 0, 15],
+        "LeftUpperArm": [35, 0, -15],
+        "UpperTorso": [5, 8, 5]
+      }
+    }
+  ]
+}

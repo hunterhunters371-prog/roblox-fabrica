@@ -1,0 +1,59 @@
+{
+  "rig": "R6",
+  "nombre": "CaminarEpico",
+  "loop": true,
+  "prioridad": "movimiento",
+  "easing": "suave",
+  "keyframes": [
+    {
+      "t": 0.0,
+      "poses": {
+        "Right Leg": [0, 0, 45],
+        "Left Leg": [0, 0, 45],
+        "Right Arm": [-15, 0, -35],
+        "Left Arm": [-15, 0, -35],
+        "Torso": [5, 8, 5]
+      }
+    },
+    {
+      "t": 0.175,
+      "poses": {
+        "Right Leg": [0, 0, 0],
+        "Left Leg": [0, 0, 0],
+        "Right Arm": [-8, 0, 0],
+        "Left Arm": [-8, 0, 0],
+        "Torso": [2, 0, 0]
+      }
+    },
+    {
+      "t": 0.35,
+      "poses": {
+        "Right Leg": [0, 0, -45],
+        "Left Leg": [0, 0, -45],
+        "Right Arm": [-15, 0, 35],
+        "Left Arm": [-15, 0, 35],
+        "Torso": [5, -8, -5]
+      }
+    },
+    {
+      "t": 0.525,
+      "poses": {
+        "Right Leg": [0, 0, 0],
+        "Left Leg": [0, 0, 0],
+        "Right Arm": [-8, 0, 0],
+        "Left Arm": [-8, 0, 0],
+        "Torso": [2, 0, 0]
+      }
+    },
+    {
+      "t": 0.7,
+      "poses": {
+        "Right Leg": [0, 0, 45],
+        "Left Leg": [0, 0, 45],
+        "Right Arm": [-15, 0, -35],
+        "Left Arm": [-15, 0, -35],
+        "Torso": [5, 8, 5]
+      }
+    }
+  ]
+}

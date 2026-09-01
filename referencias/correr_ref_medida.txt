@@ -1,0 +1,124 @@
+
+=== correr_ref.rbxm ===
+instancias: 348
+clases: {'Animator': 1, 'Decal': 1, 'Humanoid': 1, 'Keyframe': 41, 'KeyframeSequence': 1, 'Model': 1, 'Motor6D': 6, 'ObjectValue': 1, 'Part': 7, 'Pose': 287, 'SpecialMesh': 1}
+
+--- animacion ---
+nombre    : Untitled
+loop      : True
+prioridad : 2
+keyframes : 41
+duracion  : 0.67s
+
+--- RANGOS por articulacion (grados | studs) ---
+
+Head   (41 poses)
+   rot  min (-30.4, -1.7, -0.1)   max (-22.5, 1.6, 0.3)
+   pos  min (-0.0, -0.0, 0.0)   max (0.0, 0.0, 0.0)   |desplazamiento max| = 0.00 studs
+
+HumanoidRootPart   (41 poses)
+   rot  min (0.0, 0.0, 0.0)   max (0.0, 0.0, 0.0)
+   pos  min (0.0, 0.0, 0.0)   max (0.0, 0.0, 0.0)   |desplazamiento max| = 0.00 studs
+
+Left Arm   (41 poses)
+   rot  min (-7.2, -7.1, -112.4)   max (17.5, 11.8, 46.8)
+   pos  min (-0.0, -0.0, -0.0)   max (0.0, 0.0, 0.0)   |desplazamiento max| = 0.00 studs
+
+Left Leg   (41 poses)
+   rot  min (0.0, -2.5, -70.9)   max (1.0, 0.0, 87.6)
+   pos  min (-1.08, -0.62, 0.0)   max (-0.01, 1.05, 0.0)   |desplazamiento max| = 1.08 studs
+
+Right Arm   (41 poses)
+   rot  min (-7.2, -11.8, -46.8)   max (17.5, 7.1, 112.4)
+   pos  min (-0.0, -0.0, -0.0)   max (0.0, 0.0, 0.0)   |desplazamiento max| = 0.00 studs
+
+Right Leg   (41 poses)
+   rot  min (-0.0, -2.7, -100.0)   max (0.5, -0.0, 70.9)
+   pos  min (-0.18, -0.71, -0.0)   max (1.33, 1.05, 0.0)   |desplazamiento max| = 1.33 studs
+
+Torso   (41 poses)
+   rot  min (37.1, -2.4, -1.4)   max (37.1, 2.5, 2.0)
+   pos  min (-0.0, -0.08, -0.07)   max (0.0, 0.05, 0.11)   |desplazamiento max| = 0.11 studs
+
+--- MUESTRA (8 momentos del ciclo) ---
+
+t = 0.000s
+   Head               rot (-30.4, -1.7, -0.1)    pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (16.7, -7.1, -112.4)   pos (0.0, 0.0, 0.0)
+   Left Leg           rot (0.0, 0.0, 70.1)       pos (-0.35, 0.13, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (-7.2, -6.8, -46.8)    pos (0.0, 0.0, 0.0)
+   Right Leg          rot (-0.0, -0.0, 70.9)     pos (0.17, 0.13, 0.0)
+   Torso              rot (37.1, 2.5, 1.4)       pos (0.0, 0.0, 0.0)
+
+t = 0.083s
+   Head               rot (-29.4, -1.3, -0.0)    pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (17.5, -2.4, -93.0)    pos (-0.0, -0.0, -0.0)
+   Left Leg           rot (0.0, 0.0, 75.1)       pos (-0.76, -0.62, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (-3.5, -9.9, -26.9)    pos (0.0, 0.0, 0.0)
+   Right Leg          rot (-0.0, -0.0, 67.2)     pos (0.76, 0.19, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, -0.0, 0.3)      pos (0.0, 0.05, -0.07)
+
+t = 0.167s
+   Head               rot (-26.4, -0.1, 0.1)     pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (10.7, 9.8, -34.0)     pos (0.0, 0.0, 0.0)
+   Left Leg           rot (0.0, 0.0, 36.0)       pos (-1.08, 0.64, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (10.7, -9.8, 34.0)     pos (-0.0, 0.0, 0.0)
+   Right Leg          rot (-0.0, -0.0, 7.7)      pos (1.04, 0.38, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, 0.0, -0.3)      pos (-0.0, -0.02, 0.02)
+
+t = 0.250s
+   Head               rot (-23.5, 1.2, 0.2)      pos (0.0, -0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (-3.5, 9.9, 26.9)      pos (-0.0, 0.0, 0.0)
+   Left Leg           rot (-0.0, 0.0, -40.8)     pos (-0.01, 1.05, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (17.5, 2.4, 93.0)      pos (0.0, -0.0, -0.0)
+   Right Leg          rot (0.0, -0.0, -58.8)     pos (-0.01, -0.26, 0.0)
+   Torso              rot (37.1, -0.0, -0.9)     pos (-0.0, -0.08, 0.11)
+
+t = 0.333s
+   Head               rot (-22.5, 1.6, 0.3)      pos (-0.0, -0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (-7.2, 6.8, 46.8)      pos (0.0, 0.0, 0.0)
+   Left Leg           rot (0.9, -2.5, -70.9)     pos (-0.17, 0.13, 0.0)
+   Right Arm          rot (16.7, 7.1, 112.4)     pos (0.0, 0.0, 0.0)
+   Right Leg          rot (0.5, -2.7, -80.6)     pos (-0.18, -0.59, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, -2.4, -1.4)     pos (0.0, 0.0, 0.0)
+
+t = 0.417s
+   Head               rot (-23.5, 1.2, 0.2)      pos (0.0, -0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (-3.5, 9.9, 26.9)      pos (-0.0, 0.0, 0.0)
+   Left Leg           rot (0.9, -1.1, -30.1)     pos (-0.54, 0.4, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (17.5, 2.4, 93.0)      pos (0.0, -0.0, -0.0)
+   Right Leg          rot (0.0, -0.0, -100.0)    pos (0.37, -0.71, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, 0.0, -0.3)      pos (-0.0, 0.05, -0.07)
+
+t = 0.500s
+   Head               rot (-26.4, -0.1, 0.1)     pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (10.7, 9.8, -34.0)     pos (0.0, 0.0, 0.0)
+   Left Leg           rot (0.0, 0.0, 10.8)       pos (-0.92, 0.67, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (10.7, -9.8, 34.0)     pos (-0.0, 0.0, 0.0)
+   Right Leg          rot (0.0, -0.0, -21.8)     pos (1.33, 0.96, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, 0.0, 0.8)       pos (0.0, 0.01, -0.01)
+
+t = 0.583s
+   Head               rot (-29.4, -1.3, -0.0)    pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (17.5, -2.4, -93.0)    pos (-0.0, -0.0, -0.0)
+   Left Leg           rot (0.0, 0.0, 87.6)       pos (-1.02, -0.56, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (-3.5, -9.9, -26.9)    pos (0.0, 0.0, 0.0)
+   Right Leg          rot (-0.0, -0.0, 48.1)     pos (0.09, 1.05, 0.0)  <-- DESPLAZADO
+   Torso              rot (37.1, 0.0, 2.0)       pos (0.0, -0.04, 0.05)
+
+t = 0.667s
+   Head               rot (-30.4, -1.7, -0.1)    pos (0.0, 0.0, 0.0)
+   HumanoidRootPart   rot (0.0, 0.0, 0.0)        pos (0.0, 0.0, 0.0)
+   Left Arm           rot (16.7, -7.1, -112.4)   pos (0.0, 0.0, 0.0)
+   Left Leg           rot (0.0, 0.0, 70.1)       pos (-0.35, 0.13, 0.0)  <-- DESPLAZADO
+   Right Arm          rot (-7.2, -6.8, -46.8)    pos (0.0, 0.0, 0.0)
+   Right Leg          rot (-0.0, -0.0, 70.9)     pos (0.17, 0.13, 0.0)
+   Torso              rot (37.1, 2.5, 1.4)       pos (0.0, 0.0, 0.0)

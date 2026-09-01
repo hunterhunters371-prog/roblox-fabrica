@@ -769,4 +769,101 @@ def dibuja(img, nodo, ox, oy, pw, ph, forzar_pos=None):
     try:
         if rot:
             capa = Image.new("RGBA", img.size, (0, 0, 0, 0))
-            cuerpo(capa, nodo, x, y, w, h
+            cuerpo(capa, nodo, x, y, w, h)
+            hijos(capa, nodo, x, y, w, h)
+            pega_rotada(img, capa, x, y, w, h, rot)
+        else:
+            cuerpo(img, nodo, x, y, w, h)
+            hijos(img, nodo, x, y, w, h)
+    except Exception as e:
+        _omitidas.append((p.get("Name", "?"), nodo.cls, str(e)[:80]))
+
+
+# ------------------------------------------------------------------- main
+def alto_auto(raiz):
+    pend = [raiz]
+    while pend:
+        n = pend.pop()
+        if n.cls == "ScrollingFrame":
+            for h in n.hijos:
+                if h.cls in DIBUJABLES:
+                    _p = h.props.get("Position", (0, 0, 0, 0))
+                    _ws, _wo, _hs, ho = h.props.get("Size", SIZE_DEF)
+                    return int(_p[3] + ho) + 28
+        pend.extend(n.hijos)
+    mejor = [0]
+
+    def walk(n, oy):
+        if n.cls in DIBUJABLES:
+            _xs, xo, _ys, yo = n.props.get("Position", (0, 0, 0, 0))
+            _ws, _wo, _hs, ho = n.props.get("Size", SIZE_DEF)
+            mejor[0] = max(mejor[0], oy + yo + ho)
+            oy = oy + yo
+        for c in n.hijos:
+            walk(c, oy)
+
+    walk(raiz, 0)
+    if mejor[0] <= 0:
+        return 800
+    return int(min(max(mejor[0] + 40, 480), 4000))
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description="dibuja cualquier .rbxmx de interfaz como PNG")
+    ap.add_argument("rbxmx")
+    ap.add_argument("salida", nargs="?")
+    ap.add_argument("--ancho", type=int, default=1280)
+    ap.add_argument("--alto", type=int, default=0,
+                    help="alto forzado; 0 = automatico")
+    args = ap.parse_args()
+
+    if FONT_REG is None:
+        print("no se encontro ninguna fuente de texto en el sistema")
+        return 1
+    if not os.path.exists(args.rbxmx):
+        print("no existe el archivo: %s" % args.rbxmx)
+        return 2
+    try:
+        arbol = ET.parse(args.rbxmx)
+    except ET.ParseError as e:
+        print("el .rbxmx no se puede leer: %s" % e)
+        return 1
+
+    items = [el for el in arbol.getroot() if el.tag == "Item"]
+    if not items:
+        print("el .rbxmx no contiene ningun Item")
+        return 1
+    raiz = parse_item(items[0])
+
+    W = args.ancho
+    H = args.alto if args.alto > 0 else alto_auto(raiz)
+    img = Image.new("RGBA", (S(W), S(H)), (0, 0, 0, 255))
+
+    if raiz.cls == "ScreenGui":
+        hijos(img, raiz, 0, 0, S(W), S(H))
+    else:
+        dibuja(img, raiz, 0, 0, S(W), S(H))
+
+    img = img.resize((W, H), Image.LANCZOS).convert("RGB")
+    salida = args.salida or os.path.splitext(args.rbxmx)[0] + ".png"
+    img.save(salida)
+
+    print("")
+    print("OK  render")
+    print("    lienzo     : %d x %d" % (W, H))
+    print("    instancias : %d dibujadas" % _contador[0])
+    if _imagenes[0]:
+        print("    imagenes   : %d externas (caja gris, no se descargan)"
+              % _imagenes[0])
+    if _omitidas:
+        clases = sorted({c for _n, c, _e in _omitidas})
+        print("    omitidas   : %d  (%s)"
+              % (len(_omitidas), ", ".join(clases)))
+    print("    archivo    : %s" % os.path.abspath(salida))
+    print("")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

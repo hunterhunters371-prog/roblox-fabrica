@@ -1,0 +1,127 @@
+{
+  "temporada": "TEMPORADA 1 - REPARTIDOR",
+  "titulo": "PASE DE BATALLA",
+  "resaltado": "BATALLA",
+  "subtitulo": "Abre paquetes y consigue skins.",
+  "tiempo": "12d 08:42",
+  "niveles": 20,
+  "nivel": 7,
+  "xp": 2400,
+  "xpPorNivel": 3000,
+  "xpPorPremio": 100,
+  "xpPorPremioPremium": 150,
+  "textoAbrirTodos": "Abrir todos",
+  "textoPremium": "Mejorar - 400 Robux",
+  "gratis": [
+    {
+      "etiqueta": "FRAGIL",
+      "color": "azul",
+      "icono": "📦",
+      "titulo": "Caja Basica",
+      "desc": "Ligera y rapida de llevar",
+      "bonus": "x1.2",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "PESADO",
+      "color": "naranja",
+      "icono": "🧱",
+      "titulo": "Bloque Pesado",
+      "desc": "Lento pero paga un poco mas",
+      "bonus": "x1.5",
+      "nuevo": true
+    },
+    {
+      "etiqueta": "EXPRESS",
+      "color": "verde",
+      "icono": "⚡",
+      "titulo": "Paquete Express",
+      "desc": "Corre, el tiempo es oro",
+      "bonus": "x1.8",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "HELADO",
+      "color": "cian",
+      "icono": "🧊",
+      "titulo": "Caja Congelada",
+      "desc": "Mantiene el frio, bono extra",
+      "bonus": "x2.1",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "DORADA",
+      "color": "dorado",
+      "icono": "💰",
+      "titulo": "Caja Dorada",
+      "desc": "Brilla en el mapa y paga bien",
+      "bonus": "x2.5",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "SORPRESA",
+      "color": "morado",
+      "icono": "🎁",
+      "titulo": "Caja Sorpresa",
+      "desc": "Nadie sabe lo que trae",
+      "bonus": "x3.0",
+      "nuevo": true
+    }
+  ],
+  "premium": [
+    {
+      "etiqueta": "VALIOSO",
+      "color": "morado",
+      "icono": "💼",
+      "titulo": "Maletin VIP",
+      "desc": "Todos te ven, riesgo alto",
+      "bonus": "x3.0",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "SECRETO",
+      "color": "rojo",
+      "icono": "🔒",
+      "titulo": "Caja Secreta",
+      "desc": "No aparece en el radar enemigo",
+      "bonus": "x3.5",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "NUCLEAR",
+      "color": "rojo",
+      "icono": "💣",
+      "titulo": "Bomba de Pago",
+      "desc": "Peligrosa, si caes pierdes todo",
+      "bonus": "x4.2",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "DIAMANTE",
+      "color": "dorado",
+      "icono": "💎",
+      "titulo": "Caja Diamante",
+      "desc": "Ultra valiosa y muy llamativa",
+      "bonus": "x5.0",
+      "nuevo": true
+    },
+    {
+      "etiqueta": "LEGENDARIO",
+      "color": "dorado",
+      "icono": "👑",
+      "titulo": "Entrega Suprema",
+      "desc": "La leyenda del reparto final",
+      "bonus": "x6.0",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "MITICA",
+      "color": "rosa",
+      "icono": "🏆",
+      "titulo": "Entrega Estelar",
+      "desc": "La mejor del universo",
+      "bonus": "x7.5",
+      "nuevo": true
+    }
+  ]
+}

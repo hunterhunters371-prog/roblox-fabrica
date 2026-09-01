@@ -1,0 +1,82 @@
+{
+  "temporada": "TEMPORADA 2 - HELADO",
+  "titulo": "PASE INVIERNO",
+  "resaltado": "INVIERNO",
+  "subtitulo": "Abre paquetes y consigue skins.",
+  "tiempo": "12d 08:42",
+  "niveles": 10,
+  "nivel": 3,
+  "xp": 1500,
+  "xpPorNivel": 3000,
+  "xpPorPremio": 100,
+  "xpPorPremioPremium": 150,
+  "textoAbrirTodos": "Abrir todos",
+  "textoPremium": "Mejorar - 400 Robux",
+  "gratis": [
+    {
+      "etiqueta": "FRAGIL",
+      "color": "morado",
+      "icono": "📦",
+      "titulo": "Caja Basica",
+      "desc": "Ligera y rapida de llevar",
+      "bonus": "x1.2",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "PESADO",
+      "color": "morado",
+      "icono": "🧱",
+      "titulo": "Bloque Pesado",
+      "desc": "Lento pero paga un poco mas",
+      "bonus": "x1.5",
+      "nuevo": true
+    },
+    {
+      "etiqueta": "EXPRESS",
+      "color": "morado",
+      "icono": "⚡",
+      "titulo": "Paquete Express",
+      "desc": "Corre, el tiempo es oro",
+      "bonus": "x1.8",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "HELADO",
+      "color": "morado",
+      "icono": "🧊",
+      "titulo": "Caja Congelada",
+      "desc": "Mantiene el frio, bono extra",
+      "bonus": "x2.1",
+      "nuevo": false
+    }
+  ],
+  "premium": [
+    {
+      "etiqueta": "VALIOSO",
+      "color": "morado",
+      "icono": "💼",
+      "titulo": "Maletin VIP",
+      "desc": "Todos te ven, riesgo alto",
+      "bonus": "x3.0",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "SECRETO",
+      "color": "rojo",
+      "icono": "🔒",
+      "titulo": "Caja Secreta",
+      "desc": "No aparece en el radar enemigo",
+      "bonus": "x3.5",
+      "nuevo": false
+    },
+    {
+      "etiqueta": "NUCLEAR",
+      "color": "rojo",
+      "icono": "💣",
+      "titulo": "Bomba de Pago",
+      "desc": "Peligrosa, si caes pierdes todo",
+      "bonus": "x4.2",
+      "nuevo": false
+    }
+  ]
+}

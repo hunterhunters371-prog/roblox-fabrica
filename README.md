@@ -7,6 +7,19 @@ Proyecto: *LAST DELIVERY: 60 SECONDS*
 
 ---
 
+## 📘 Guia completa
+
+Todo el conocimiento del repositorio recopilado en un solo documento:
+
+- Catalogo de **mecanicas** (9 modulos) con funciones y usos
+- Como **ejecutar sin errores** (pipeline, requisitos, checklist)
+- Los **modelos JSON** de animacion e interfaz
+- El **flujo multiagente** de integracion
+
+👉 **Lee [GUIA-COMPLETA.md](GUIA-COMPLETA.md)**
+
+---
+
 ## Como funciona
 
 1. Le pides a una IA que lea el prompt que corresponde:
@@ -56,6 +69,8 @@ prompts/        los textos que le das a la IA
 animaciones/    animaciones que ya funcionan (.json editable)
 interfaces/     interfaces que ya funcionan (.json editable)
 referencias/    medidas reales de animaciones analizadas
+mecanicas/      catalogo completo de mecanicas (9 modulos)
+GUIA-COMPLETA.md  la guia recopilada
 ```
 
 ---

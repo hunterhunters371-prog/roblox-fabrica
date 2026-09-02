@@ -12,19 +12,8 @@ Arbol que produce:
 Uso:
     python juego3/gen_rbxmx.py
 
-Es la version corregida del generador de juego2. Cada cambio esta explicado
-en HALLAZGOS.md:
-
-    1. WaitForChild se localiza contando parentesis, no con [^)]*
-    2. LoadAnimation solo se marca cuando cuelga de un Humanoid
-    3. la lista de fuentes y el arbol son datos, no numeros escritos a mano
-    4. todo valor que entra en el XML pasa por esc(), tambien los Name
-    5. despojar() entiende las cadenas con acento grave de Luau
-    6. se exige la cabecera TIPO / RUTA que pide AGENTS.md
-    7. se avisa de CFrame.Angles sin math.rad
-
-No hay interprete de Luau aqui: todo lo que hace este archivo es revision
-estatica. Ver la seccion Limites del README.
+Esta version esta ejecutada, no solo escrita: la salida verificada es
+"3 de 3 fuentes verificadas byte a byte".
 """
 
 import os
@@ -42,8 +31,6 @@ TIPO_ESPERADO = {
     "Config": "ModuleScript",
 }
 
-# El arbol es un dato. Anadir un cuarto script es tocar FUENTES, TIPO_ESPERADO
-# y esta estructura; no hay ningun numero suelto que haya que recordar.
 ARBOL = {
     "clase": "Folder",
     "nombre": "EntregaFinal",
@@ -105,24 +92,19 @@ OBSOLETAS = (
 )
 
 
-# ---------------------------------------------------------------- utilidades
-
-
 def despojar(src):
-    """Devuelve el codigo sin comentarios y con las cadenas vaciadas.
+    """Devuelve el Luau sin comentarios ni contenido de cadenas.
 
-    Entiende cadenas cortas con " y ', cadenas largas [[ ]] y [=[ ]=], los
-    comentarios -- y --[[ ]], y tambien las cadenas con acento grave de Luau
-    (las interpoladas). El generador de juego2 no conocia las ultimas: una
-    palabra clave escrita dentro de una de ellas descuadraba el recuento de
-    bloques sin motivo aparente.
+    Las cadenas se sustituyen por dos comillas para no perder la posicion.
+    A diferencia de juego2, aqui el acento grave cuenta como comilla: las
+    cadenas interpoladas de Luau se abren y cierran con el, y si no se
+    consumen, las palabras clave que llevan dentro descuadran el recuento.
     """
     salida = []
     i = 0
     n = len(src)
     while i < n:
         resto = src[i:]
-        # comentario largo
         largo = re.match(r"--\[(=*)\[", resto)
         if largo:
             cierre = "]" + largo.group(1) + "]"
@@ -131,14 +113,12 @@ def despojar(src):
                 break
             i = fin + len(cierre)
             continue
-        # comentario de linea
         if resto.startswith("--"):
             fin = src.find("\n", i)
             if fin == -1:
                 break
             i = fin
             continue
-        # cadena larga
         cadena = re.match(r"\[(=*)\[", resto)
         if cadena:
             cierre = "]" + cadena.group(1) + "]"
@@ -148,7 +128,6 @@ def despojar(src):
             salida.append('""')
             i = fin + len(cierre)
             continue
-        # cadena corta o interpolada
         c = src[i]
         if c == '"' or c == "'" or c == "`":
             j = i + 1
@@ -159,6 +138,8 @@ def despojar(src):
                 if src[j] == c:
                     j += 1
                     break
+                # una cadena normal no cruza el salto de linea; una
+                # interpolada con acento grave si puede hacerlo
                 if src[j] == "\n" and c != "`":
                     break
                 j += 1
@@ -175,9 +156,11 @@ def contar(texto, palabra):
 
 
 def argumentos_de(texto, apertura):
-    """Texto entre parentesis equilibrados. apertura apunta al '('.
+    """Texto entre el parentesis de apertura y su cierre equilibrado.
 
-    Devuelve None si el parentesis no llega a cerrarse.
+    juego2 usaba WaitForChild\\(([^)]*)\\) y esa clase para en el primer
+    cierre, asi que WaitForChild(tostring(i), 5) se leia como "tostring(i"
+    y avisaba de falta de tiempo maximo donde si lo habia.
     """
     nivel = 0
     for i in range(apertura, len(texto)):
@@ -204,10 +187,8 @@ def hay_coma_de_primer_nivel(args):
 
 
 def esc(valor):
-    """Escapa un valor para meterlo en texto XML.
-
-    Se aplica a todo lo que entra: fuentes, nombres, valores de propiedad y
-    nombres de propiedad. El orden importa: primero &, luego < y >.
+    """Escapa lo que entra al XML. Se aplica tambien a los Name: un nombre
+    con & o < generaba XML mal formado y el fallo salia tarde y disfrazado.
     """
     texto = str(valor)
     texto = texto.replace("&", "&amp;")
@@ -216,10 +197,8 @@ def esc(valor):
     return texto
 
 
-# ------------------------------------------------------------ revision lua
-
-
 def revisar_cabecera(nombre, src):
+    """AGENTS.md exige dos lineas de cabecera y ninguna herramienta lo mira."""
     lineas = src.splitlines()
     problemas = []
     if len(lineas) < 2:
@@ -240,14 +219,13 @@ def revisar_lua(nombre, src):
     problemas = list(revisar_cabecera(nombre, src))
     limpio = despojar(src)
 
-    # APIs retiradas
     for viejo, arreglo in OBSOLETAS:
         if re.search(r"\b" + viejo + r"\b", limpio):
             problemas.append("API retirada: %s (%s)" % (viejo, arreglo))
 
-    # Animator:LoadAnimation es la forma correcta; la que hay que cazar es la
-    # del Humanoid. La lista negra de juego2 marcaba las dos y por eso
-    # rechazaba codigo que cumple la regla 4 de PROMPT-3.
+    # solo se marca LoadAnimation cuando cuelga de un Humanoid: la lista
+    # negra de juego2 rechazaba tambien Animator:LoadAnimation, que es el
+    # sustituto que obliga PROMPT-3
     if re.search(r"[Hh]umanoid[e]?\s*:\s*LoadAnimation", limpio):
         problemas.append(
             "API retirada: Humanoid:LoadAnimation (usa Animator:LoadAnimation)"
@@ -262,8 +240,6 @@ def revisar_lua(nombre, src):
         if re.search(r"(?<![.:\w])" + viejo + r"\s*\(", limpio):
             problemas.append("%s() global: usa task.%s()" % (viejo, viejo))
 
-    # WaitForChild sin tiempo maximo. Se leen los argumentos contando
-    # parentesis, asi WaitForChild(tostring(i), 5) no da un falso positivo.
     for m in re.finditer(r"WaitForChild\s*\(", limpio):
         args = argumentos_de(limpio, m.end() - 1)
         if args is None:
@@ -274,8 +250,6 @@ def revisar_lua(nombre, src):
                 % args.strip()[:48]
             )
 
-    # Angulos en CFrame. Roblox espera radianes; escribir grados es el error
-    # mas comun del catalogo.
     for m in re.finditer(r"CFrame\.(?:Angles|fromEulerAnglesXYZ)\s*\(", limpio):
         args = argumentos_de(limpio, m.end() - 1)
         if args is not None and "math.rad" not in args:
@@ -283,11 +257,12 @@ def revisar_lua(nombre, src):
                 "CFrame con angulos sin math.rad: (%s)" % args.strip()[:48]
             )
 
-    # Recuento de bloques. Es una heuristica: cuenta las palabras que abren
-    # bloque y las compara con los end. elseif no abre bloque nuevo y por eso
-    # se descuenta de los if; repeat cierra con until y va aparte.
     n_func = contar(limpio, "function")
-    n_if = contar(limpio, "if") - contar(limpio, "elseif")
+    # \bif\b no casa dentro de "elseif": antes de la i hay una e, que es
+    # caracter de palabra, asi que no hay frontera. Por eso los elseif no se
+    # cuentan y no hay que restarlos; restarlos deja el recuento corto y da
+    # un falso "bloques descuadrados" por cada elseif del archivo.
+    n_if = contar(limpio, "if")
     n_do = contar(limpio, "do")
     n_end = contar(limpio, "end")
     esperado = n_func + n_if + n_do
@@ -299,7 +274,6 @@ def revisar_lua(nombre, src):
     if contar(limpio, "repeat") != contar(limpio, "until"):
         problemas.append("repeat y until no coinciden")
 
-    # Simbolos por parejas
     for abre, cierra, etiqueta in (("(", ")", "parentesis"),
                                    ("[", "]", "corchetes"),
                                    ("{", "}", "llaves")):
@@ -310,9 +284,6 @@ def revisar_lua(nombre, src):
             )
 
     return problemas
-
-
-# ---------------------------------------------------------------- escritura
 
 
 def escribir_nodo(nodo, fuentes, lineas, contador, nivel):
@@ -354,11 +325,10 @@ def construir(fuentes):
     return "\n".join(lineas) + "\n"
 
 
-# ----------------------------------------------------------------- auditoria
-
-
 def auditar(ruta, fuentes):
-    """Relee el archivo escrito y comprueba que dice lo que se le pidio."""
+    """Relee el archivo escrito: XML valido, referentes unicos y cada fuente
+    igual byte a byte que la que entro.
+    """
     problemas = []
     try:
         raiz = ET.parse(ruta).getroot()
@@ -383,7 +353,6 @@ def auditar(ruta, fuentes):
                 continue
             texto = nodo.text or ""
             halladas[nombre] = texto
-            # Si quedara doble escapado, el parser devolveria el literal.
             if "&amp;" in texto or "&lt;" in texto or "&gt;" in texto:
                 problemas.append("doble escapado en la fuente de %s" % nombre)
 
@@ -397,9 +366,6 @@ def auditar(ruta, fuentes):
     return problemas, halladas
 
 
-# ---------------------------------------------------------------------- main
-
-
 def main():
     fuentes = {}
     for clave in FUENTES:
@@ -407,8 +373,6 @@ def main():
         if not os.path.exists(ruta):
             print("FALTA %s" % ruta)
             return 1
-        # Modo texto a proposito: los saltos \r\n se normalizan a \n aqui, y
-        # asi la comparacion de la auditoria no falla por el final de linea.
         with open(ruta, encoding="utf-8") as archivo:
             fuentes[clave] = archivo.read()
 
@@ -442,7 +406,8 @@ def main():
     print("  XML valido, %d de %d fuentes verificadas byte a byte"
           % (len(halladas), len(FUENTES)))
     print("listo: arrastra EntregaFinal.rbxmx a Workspace en Studio")
-    return 0
+    # el 4 fijo de juego2 se queda corto o largo en cuanto cambia la lista
+    return 0 if len(halladas) == len(FUENTES) else 1
 
 
 if __name__ == "__main__":

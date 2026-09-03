@@ -10,7 +10,7 @@ Proyecto: *LAST DELIVERY: 60 SECONDS*
 
 ## Catalogo de mecanicas
 
-Mas de 170 mecanicas de Roblox documentadas, cada una con su codigo Luau listo
+Mas de 180 mecanicas de Roblox documentadas, cada una con su codigo Luau listo
 para pegar, sus errores tipicos y su lista de comprobacion.
 
 **Empieza aqui: [mecanicas/00-INDICE.md](mecanicas/00-INDICE.md)**
@@ -26,9 +26,16 @@ para pegar, sus errores tipicos y su lista de comprobacion.
 | [07](mecanicas/07-fisica-modelos.md) | Fisica, CFrame y modelos |
 | [08](mecanicas/08-sistemas.md) | Sistemas: economia, inventario, rondas, NPC |
 | [09](mecanicas/09-errores-y-checklist.md) | Catalogo de errores y checklists |
+| [10](mecanicas/10-mejoras.md) | Mejoras: mecanicas extraidas del juego en produccion |
 
 El modulo 09 contiene los limites exactos de los validadores, sacados leyendo
 el codigo de `herramientas/`, y 60 errores con su causa real y su solucion.
+
+El modulo 10 es distinto a los demas: no explica mecanicas de Roblox en general,
+sino las **doce que ya estan funcionando** en el Place de Studio del proyecto,
+con los numeros reales que quedaron despues de probarlas y corregirlas. Rondas,
+carga, deslizada, combo, anticheat, camara, economia blindada y power-ups
+guiados por tabla. Si vas a tocar el equilibrio del juego, empieza ahi.
 
 ---
 
@@ -84,7 +91,7 @@ texto completo. Funciona igual.
 ```
 herramientas/     los .py y el revisar_pase.bat
 prompts/          los textos que le das a la IA
-mecanicas/        catalogo de mecanicas (10 archivos)
+mecanicas/        catalogo de mecanicas (11 archivos)
 animaciones/      animaciones que ya funcionan (.json editable)
 interfaces/       interfaces que ya funcionan (.json editable)
 referencias/      medidas reales de animaciones analizadas
@@ -109,6 +116,23 @@ que mas veces rompen un JSON:
 Y el limite de texto de las tarjetas del pase **depende de cuantos premios
 pongas**: con 6 premios cada tarjeta es estrecha y el titulo solo admite 16
 caracteres. La tabla completa esta en el modulo 09, Parte D.
+
+---
+
+## El equilibrio del juego, en una tabla
+
+Los numeros con los que se juega hoy estan todos en
+`mecanicas/10-mejoras.md`, en la seccion **Resumen de constantes**. Estos son
+los seis que mas cambian como se siente la partida:
+
+| Cosa | Valor actual |
+|---|---|
+| Duracion de la ronda | 90 segundos |
+| Cajas que se pueden llevar | 3 |
+| Penalizacion de velocidad por caja | 2.6 |
+| Ventana del combo | 12 segundos |
+| Coste de la deslizada | 22 de 100 de resistencia |
+| Avisos del anticheat antes de corregir | 3 |
 
 ---
 

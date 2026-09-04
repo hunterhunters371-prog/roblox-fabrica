@@ -1,0 +1,33 @@
+SINTAXIS LUA 5.4 + ASCII: Servidor
+SINTAXIS LUA 5.4 + ASCII: Cliente
+SINTAXIS LUA 5.4 + ASCII: Config
+SINTAXIS LUA 5.4 + ASCII: Turnos
+OK contrato inicial accesible
+OK elecciones invalidas rechazadas
+OK eleccion bloqueada durante el turno
+OK carga: bronce plata oro y recompensa
+OK ruta cuenta destinos no viajes repetidos
+OK express cuenta pedidos urgentes no cajas
+OK repetir entrega no duplica avance
+OK cierre repetido no duplica premio
+OK rondas viejas no cambian la actual
+OK cero entregas no premia AFK
+OK nuevo turno conserva reputacion y limpia objetivos
+OK jugadores independientes
+OK numeros no finitos fuera de rango y fracciones
+OK limites exactos de los rangos
+OK mil eventos con duplicados y premio acotado
+PRUEBAS DE CONTRATOS: 15
+OK servidor: entrega valida
+OK servidor: vencida en el instante exacto
+OK servidor: ronda terminada en el instante exacto
+OK servidor: jugador demasiado lejos
+OK servidor: jugador muerto
+OK servidor: sin carga
+OK servidor: sin ronda activa
+OK servidor: entrega ya registrada
+OK servidor: enfriamiento de toque
+OK servidor: recogida con antirrebote
+PRUEBAS DE INTEGRACION SIMULADA: 10
+XML: 4 fuentes identicas; SHA256: todas las firmas correctas
+PENDIENTE: compilador Luau, Play Solo, dos clientes, R6/R15, HUD y guardado en Roblox.
